@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('Laporan') ?>" class="nav-link">
                         <i class="nav-icon fas fa-solid fa-file"></i>
                         <p>Laporan</p>
                     </a>

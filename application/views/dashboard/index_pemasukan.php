@@ -35,7 +35,7 @@
 </div>
 
 <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-dialog-centered modal-md" role="document">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-lg" role="document">
         <div class="modal-content bg-gradient-dark">
             <div class="modal-header">
                 <div class="d-flex px-2">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <table class="table table-sm table-bordered table-stripped" width="100%">
+                    <table class="table table-bordered table-stripped" width="100%">
                         <thead>
                             <tr>
                                 <th class="text-center">Tanggal</th>
@@ -157,8 +157,8 @@
 </div>
 
 <script>
-    var base_url = "<?= base_url('Pemasukan') ?>";
-    var base_url2 = "<?= base_url('Pemakaian') ?>";
+    var base_url = "<?= base_url() ?>/Pemasukan";
+    var base_url2 = "<?= base_url() ?>/Pemakaian";
 
     function add() {
         $('#title-modal').html('Form Tambah Pemasukan');
