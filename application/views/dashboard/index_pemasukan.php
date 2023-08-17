@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm table-hovered table-stripped" id="my-table" width="100%">
-                        <thead>
+                    <table class="table table-bordered table-sm table-hover table-striped border-success" id="my-table" width="100%">
+                        <thead class="bg-lime">
                             <tr>
                                 <!-- <th class="text-dark">No.</th> -->
                                 <th class="text-dark">Tanggal</th>
@@ -371,6 +371,7 @@
             }],
             columns: [{
                     data: 'tanggal',
+                    className: 'text-center'
                 },
                 {
                     data: 'keterangan',
@@ -389,6 +390,7 @@
                 },
                 {
                     data: 'id',
+                    className: 'text-center',
                     render: function(data, type, row, meta) {
                         return `
                                 <a href="#preview" class="badge badge-secondary" data-toggle="modal" onclick="show(` + row.id + `)">Detail</a>

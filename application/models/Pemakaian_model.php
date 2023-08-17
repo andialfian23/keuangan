@@ -79,14 +79,22 @@ class pemakaian_model extends CI_Model
     //GRAFIK
     public function mingguan()
     {
-        return $this->db->select("DATE(DATE_SUB(tgl_pemakaian, INTERVAL WEEKDAY(tgl_pemakaian) DAY)) as minggu_ke, 
-                                    MIN(tgl_pemakaian) as tgl_awal,
-                                    MAX(tgl_pemakaian) as tgl_akhir,
-                                    SUM(jml_pemakaian) as total,
-                                    AVG(jml_pemakaian) as rata_rata", FALSE)
+        return $this->db->select("DATE(DATE_SUB(tgl_pemakaian, 
+                        INTERVAL WEEKDAY(tgl_pemakaian) DAY)) as minggu_ke, 
+                        MIN(tgl_pemakaian) as tgl_awal, MAX(tgl_pemakaian) as tgl_akhir,
+                        SUM(jml_pemakaian) as total, AVG(jml_pemakaian) as rata_rata", FALSE)
             ->from($this->table)
             ->group_by('minggu_ke')
             ->order_by('minggu_ke', 'ASC')
             ->get()->result();
+    }
+
+    public function perbulan()
+    {
+        return $this->db->select("CONCAT(YEAR(tgl_pemasukan),'-',MONTH(tgl_pemasukan)) as per_bulan, 
+            sum(jml_pemasukan) as total_pemasukan, 
+            (SELECT sum(jml_pemakaian) FROM t_pemakaian 
+                WHERE YEAR(tgl_pemakaian)=YEAR(a.tgl_pemasukan) AND MONTH(tgl_pemakaian)=MONTH(a.tgl_pemasukan)) as total_pemakaian")
+            ->from('t_pemasukan a')->group_by(['YEAR(tgl_pemasukan)', 'MONTH(tgl_pemasukan)'])->get();
     }
 }

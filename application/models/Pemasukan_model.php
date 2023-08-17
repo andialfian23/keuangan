@@ -95,8 +95,12 @@ class pemasukan_model extends CI_Model
         return $this->db->select("
         sum(jml_pemasukan) as total_pemasukan,
         sum((SELECT sum(jml_pemakaian) FROM t_pemakaian WHERE id_pemasukan=a.id))  as total_pemakaian,
-        sum(jml_pemasukan - (SELECT sum(jml_pemakaian) FROM t_pemakaian WHERE id_pemasukan=a.id)) as total_sisa,
+        (sum(jml_pemasukan) - (SELECT sum(jml_pemakaian) FROM t_pemakaian WHERE id_pemasukan=a.id)) as total_sisa,
         avg((SELECT avg(jml_pemakaian) FROM t_pemakaian WHERE id_pemasukan=a.id)) as avg_pemakaian
         ")->from('t_pemasukan a')->get()->row();
+    }
+    public function terakhir()
+    {
+        return $this->db->select('jml_pemasukan')->order_by('tgl_pemasukan', 'DESC')->limit(1)->get($this->table);
     }
 }

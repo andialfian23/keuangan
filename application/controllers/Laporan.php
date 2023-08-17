@@ -12,7 +12,7 @@ class Laporan extends CI_Controller
     public function index()
     {
         $this->load->view('template/index', [
-            'judul' => 'Laporan Pemakaian Mingguan',
+            'judul' => 'Laporan Pengeluaran Mingguan',
             'konten' => 'dashboard/index_laporan'
         ]);
     }

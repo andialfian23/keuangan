@@ -45,7 +45,6 @@
             buttons: [{
                     extend: 'pageLength',
                     text: 'Tampilkan',
-                    className: 'btn btn-info',
                 },
                 // {
                 //     extend: 'pdf',
